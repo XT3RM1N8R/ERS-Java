@@ -31,4 +31,12 @@ public class pile {
     public card drawTop() {
         return pil.remove(pil.size()-1);
     }
+    
+    public void addToBottom(card cCard) {
+        pil.add(0, cCard);
+    }
+    
+    public void addToTop(card cCard) {
+        pil.add(cCard);
+    }
 }
