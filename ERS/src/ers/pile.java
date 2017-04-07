@@ -11,7 +11,7 @@ import java.util.*;
  * @author shadows97_7
  */
 public class pile {
-    ArrayList<card> pil;
+    static ArrayList<card> pil;//static
     pile(){
         pil = new ArrayList<card>();
     }
@@ -38,5 +38,9 @@ public class pile {
     
     public void addToTop(card cCard) {
         pil.add(cCard);
+    }
+    public boolean check_slap(){
+        //series of checks; return true if check is true
+        /*otherwise*/return false;
     }
 }
