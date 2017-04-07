@@ -4,13 +4,31 @@
  * and open the template in the editor.
  */
 package ers;
+import java.util.*;
 
 /**
  *
  * @author shadows97_7
  */
 public class pile {
+    ArrayList<card> pil;
     pile(){
-        
+        pil = new ArrayList<card>();
+    }
+    
+    public card bottom() {
+        return pil.get(0);
+    }
+    
+    public card drawBottom() {
+        return pil.remove(0);
+    }
+    
+    public card top() {
+        return pil.get(pil.size()-1);
+    }
+    
+    public card drawTop() {
+        return pil.remove(pil.size()-1);
     }
 }
