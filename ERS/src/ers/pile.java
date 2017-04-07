@@ -10,5 +10,7 @@ package ers;
  * @author shadows97_7
  */
 public class pile {
-    
+    pile(){
+        
+    }
 }

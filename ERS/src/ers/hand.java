@@ -10,8 +10,12 @@ package ers;
  * @author shadows97_7
  */
 public class hand {
+    //backs up top card hcards[0]
     card hcards[];
     int hsize;
+    hand(){
+        
+    }
     hand(deck d,int drw){
         hsize=0;
         hcards=new card[52];
@@ -32,7 +36,7 @@ public class hand {
     public void add(card c){
         hcards[hsize++]=c;
     }
-    public void add2(card c1, card c2){
+    public void add(card c1, card c2){
         add(c1);
         add(c2);
     }
