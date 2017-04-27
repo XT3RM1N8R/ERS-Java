@@ -5,13 +5,12 @@
  */
 package ers;
 
-
-
 /**
  *
  * @author shadows97_7
  */
 public class hand {
+
     //backs up top card hcards[0]
     card hcards[];
     int hsize;
@@ -20,15 +19,19 @@ public class hand {
     hand(){
         
     }
+  
     hand(deck d,int drw){
         hsize=0;
         can_slap=true;
+
         hcards=new card[52];
         while(hsize<drw){
             hcards[hsize++]=d.draw();
         }
     }
+
     public void mill(ers.pile p){//ers.pile
+
         card temp = new card(hcards[0].suit,hcards[0].rank);
         int x=0;
         while(x!=hsize-1){
@@ -38,6 +41,7 @@ public class hand {
         hsize--;
         p.addToBottom(temp);
     }
+  
     public void slap(ers.pile p){//ers.pile
         if (p.check_slap())
             while (!p.pil.isEmpty()){
@@ -50,10 +54,13 @@ public class hand {
         }
         else
             can_slap=false;
+
     }
+  
     public void add(card c){
         hcards[hsize++]=c;
     }
+
     public void add(card c1, card c2){
         add(c1);
         add(c2);

@@ -5,6 +5,7 @@
  */
 package ers;
 
+
 import java.util.Scanner;
 
 /**
@@ -16,8 +17,7 @@ public class ERS {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) {   
         System.out.println("How many players?: ");
         Scanner scan=new Scanner(System.in);
         int num_of_players=scan.nextInt();
@@ -27,8 +27,4 @@ public class ERS {
             p.plist[i].add(initial_deck.draw());
         }
     }
-    
-    
-    
-    
 }
