@@ -44,7 +44,7 @@ public class hand {
   
     public void slap(ers.pile p){//ers.pile
         if (p.Check_slap())
-            while (!p.isEmpty()){
+            while (!p.IsEmpty()){
                 p.DrawBottom();
             }
         else if(hsize!=0) {

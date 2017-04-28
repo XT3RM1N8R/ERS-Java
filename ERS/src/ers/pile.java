@@ -61,7 +61,7 @@ public class pile {
         /*otherwise*/return false;
     }
     
-    public boolean isEmpty() {
+    public boolean IsEmpty() {
         return pileCards.isEmpty();
     }
     
