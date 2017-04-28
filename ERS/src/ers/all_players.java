@@ -13,12 +13,13 @@ import java.awt.event.KeyListener;
  * @author shadows97_7
  */
 
-public class players implements KeyListener{
+public class all_players implements KeyListener{
     hand plist[];
-    players(){
+    boolean turn_flag=true;
+    all_players(){
         
     }
-    players(int num_o_p){
+    all_players(int num_o_p){
         plist=new hand[num_o_p];
         for(int i=0;i<num_o_p;i++){
             plist[i]=new hand();
@@ -46,6 +47,8 @@ public class players implements KeyListener{
             case KeyEvent.VK_M:
                 plist[3].slap(plile);
                 break;
+            case KeyEvent.VK_SPACE:
+                turn_flag=false;
             
         }
     }
