@@ -39,13 +39,13 @@ public class hand {
             x++;
         }
         hsize--;
-        p.addToBottom(temp);
+        p.AddToBottom(temp);
     }
   
     public void slap(ers.pile p){//ers.pile
-        if (p.check_slap())
-            while (!p.pil.isEmpty()){
-                p.drawBottom();
+        if (p.Check_slap())
+            while (!p.isEmpty()){
+                p.DrawBottom();
             }
         else if(hsize!=0) {
             mill(p);

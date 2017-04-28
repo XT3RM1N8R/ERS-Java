@@ -11,26 +11,26 @@ import java.util.*;
  * @author shadows97_7
  */
 public class pile {
-    static ArrayList<card> pil;//static
+    static ArrayList<card> pileCards;//static
     public int NUM_RANKS = 13;
     pile(){
-        pil = new ArrayList<card>();
+        pileCards = new ArrayList<card>();
     }
     
     public card BottomCard() {
-        return pil.get(0);
+        return pileCards.get(0);
     }
     
     public card DrawBottom() {
-        return pil.remove(0);
+        return pileCards.remove(0);
     }
     
     public card TopCard() {
-        return pil.get(pil.size()-1);
+        return pileCards.get(pileCards.size()-1);
     }
     
     public card DrawTop() {
-        return pil.remove(pil.size()-1);
+        return pileCards.remove(pileCards.size()-1);
     }
     
     public card LastCard() {
@@ -38,46 +38,50 @@ public class pile {
     }
     
     public card SecondLastCard() {
-        return pil.get(pil.size()-2);
+        return pileCards.get(pileCards.size()-2);
     }
     
     public card ThirdLastCard() {
-        return pil.get(pil.size()-3);
+        return pileCards.get(pileCards.size()-3);
     }
     
     public card FourthLastCard() {
-        return pil.get(pil.size()-4);
+        return pileCards.get(pileCards.size()-4);
     }
     
     public void AddToBottom(card cCard) {
-        pil.add(0, cCard);
+        pileCards.add(0, cCard);
     }
     
     public void AddToTop(card cCard) {
-        pil.add(cCard);
+        pileCards.add(cCard);
     }
     public boolean Check_slap(){
         //series of checks; return true if check is true
         /*otherwise*/return false;
     }
     
+    public boolean isEmpty() {
+        return pileCards.isEmpty();
+    }
+    
     public class SlapRules {
         public boolean Double() {
-            return (LastCard().rank == SecondLastCard().rank);
+            return (LastCard().rank_value() == SecondLastCard().rank_value());
         }
         
         public boolean Sandwich() {
-            return (LastCard().rank == ThirdLastCard().rank);
+            return (LastCard().rank_value() == ThirdLastCard().rank_value());
         }
         
         public boolean TopBottom() {
-            return (TopCard().rank == BottomCard().rank);
+            return (TopCard().rank_value() == BottomCard().rank_value());
         }
         
         public boolean Tens() {
-            if(LastCard().rank + SecondLastCard().rank == 10) {
+            if(LastCard().rank_value() + SecondLastCard().rank_value() == 10) {
                 return true;
-            } else if(LastCard().rank + ThirdLastCard().rank == 10) {
+            } else if(LastCard().rank_value() + ThirdLastCard().rank_value() == 10) {
                 return true;
             } else {
                 return false;
@@ -85,14 +89,20 @@ public class pile {
         }
         
         public boolean Run() {
-            if((FourthLastCard().rank + 1) % NUM_RANKS == ThirdLastCard().rank) {
-                if((ThirdLastCard().rank + 1) % NUM_RANKS == SecondLastCard().rank) {
-                    if((SecondLastCard().rank + 1) % NUM_RANKS LastCard().rank) {
-                        return true;
-                    }
-                }
+            if(((FourthLastCard().rank_value() - 1) + 1) % NUM_RANKS == ThirdLastCard().rank_value() - 1 && 
+               ((ThirdLastCard().rank_value() - 1) + 1) % NUM_RANKS == SecondLastCard().rank_value() - 1 && 
+               ((SecondLastCard().rank_value() - 1) + 1) % NUM_RANKS == LastCard().rank_value() - 1) {
+                return true;
             }
             return false;
+        }
+        
+        public boolean Marriage() {
+            if(LastCard().rank_value() + SecondLastCard().rank_value() == 25) { // If the last 2 cards are Queen and King
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }
