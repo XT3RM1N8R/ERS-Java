@@ -73,6 +73,6 @@ public class hand {
             x++;
         }
         hsize--;
-        p.addToTop(temp);
+        p.AddToTop(temp);
     }
 }
