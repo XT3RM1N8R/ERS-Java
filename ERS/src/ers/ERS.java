@@ -29,7 +29,6 @@ public class ERS {
         int turn = 1;
         pile play_here= new pile();
         for(int i=0;initial_deck.dsize!=0;i=(i+1)%num_of_players){
-            System.out.println(i+1);
             p.plist[i].add(initial_deck.draw());
         }
         /*JFrame window=new JFrame();
