@@ -17,7 +17,7 @@ public class hand {
     int player_number;
     boolean can_slap;
     hand(){
-        
+        hcards=new card[52];
     }
   
     hand(deck d,int drw){
@@ -64,5 +64,15 @@ public class hand {
     public void add(card c1, card c2){
         add(c1);
         add(c2);
+    }
+    public void play(ers.pile p){
+        card temp = new card(hcards[0].suit,hcards[0].rank);
+        int x=0;
+        while(x!=hsize-1){
+            hcards[x]=hcards[x+1];
+            x++;
+        }
+        hsize--;
+        p.addToTop(temp);
     }
 }
