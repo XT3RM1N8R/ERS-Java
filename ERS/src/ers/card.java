@@ -20,7 +20,7 @@ public class card {
         int r;
         switch (rank){
                 case 'A':
-                    r=1;
+                    r=14;
                     break;
                 case 'K':
                     r=13;
