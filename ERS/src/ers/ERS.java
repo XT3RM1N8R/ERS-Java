@@ -32,7 +32,7 @@ public class ERS {
             System.out.println(i+1);
             p.plist[i].add(initial_deck.draw());
         }
-        JFrame window=new JFrame();
+        /*JFrame window=new JFrame();
         window.setTitle("ERS");
         window.setSize(819, 648);
         window.setVisible(true);
@@ -40,7 +40,7 @@ public class ERS {
         DrawingComponent DC = new DrawingComponent();
         /*File img =new File("as");
         BufferedImage card = Image(img);*/
-        //window.add(DC);
+        //window.add(DC);*/
         for(;;){
             if (p.turn_flag==false)
                 p.plist[turn-1].play(play_here);
@@ -52,7 +52,7 @@ public class ERS {
         }
     }
 
-    private static BufferedImage Image(File img) {
+    /*private static BufferedImage Image(File img) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 }
