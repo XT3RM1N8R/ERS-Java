@@ -29,7 +29,8 @@ public class all_players implements KeyListener{
     pile plile;//THIS THING AND EVERYTIME I USED IT
     
     public boolean GameOver() {
-        for(int playerIndex = 0; playerIndex < 4; playerIndex++) {
+        for(int playerIndex = 0; playerIndex < ERS.nop; playerIndex++) {
+            System.out.println("Cylcle"+playerIndex);
             if(plist[playerIndex].hsize == 52 && plile.IsEmpty()) { // NUM_CARDS is 52
                 return true;
             } else if(plist[playerIndex].hsize == 52) {

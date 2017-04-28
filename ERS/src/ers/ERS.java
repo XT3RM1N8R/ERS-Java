@@ -17,7 +17,7 @@ import javax.swing.JFrame;
  * @author shadows97_7
  */
 public class ERS {
-
+    public static int nop;
     /**
      * @param args the command line arguments
      */
@@ -26,6 +26,7 @@ public class ERS {
         System.out.println("How many players?: ");
         Scanner scan=new Scanner(System.in);
         int num_of_players=scan.nextInt();
+        ERS.nop=num_of_players;
         deck initial_deck=new deck();
         all_players p= new all_players(num_of_players);
         int turn = 1;
@@ -40,10 +41,10 @@ public class ERS {
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.addKeyListener(p);
-        //DrawingComponent DC = new DrawingComponent();
+        DrawingComponent DC = new DrawingComponent();
         /*File img =new File("as");
         BufferedImage card = Image(img);*/
-        //window.add(DC);*/
+        window.add(DC);
         for(;;){ // Game Loop Here
             TimeUnit.MILLISECONDS.sleep(100);
             System.out.println("Player" + turn + " turn.");
