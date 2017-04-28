@@ -18,10 +18,12 @@ import javax.swing.JFrame;
  */
 public class ERS {
     public static int nop;
+    public static boolean started;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws InterruptedException {
+        started=false;
         System.out.println("Welcome to ERS-Java. Maximum of 4 players supported.\nSlap Keys:\n\tPlayer1: Q\n\tPlayer2: P\n\tPlayer3: Z\n\tPlayer4: M\nMill Key: SPACE");
         System.out.println("How many players?: ");
         Scanner scan=new Scanner(System.in);
@@ -45,11 +47,15 @@ public class ERS {
         /*File img =new File("as");
         BufferedImage card = Image(img);*/
         window.add(DC);
+        card viewing;
         for(;;){ // Game Loop Here
             TimeUnit.MILLISECONDS.sleep(100);
             System.out.println("Player" + turn + " turn.");
             if (p.turn_flag==false) {
                 p.plist[turn-1].play(play_here);
+                started=true;
+                DC.setRank(play_here.TopCard());
+                DC.setSuit(play_here.TopCard());
             }
             else
                 continue;
@@ -60,6 +66,7 @@ public class ERS {
             if(p.GameOver()) {
                 break;
             }
+            window.repaint();
         }
         System.out.println("Game Over.");
     }
