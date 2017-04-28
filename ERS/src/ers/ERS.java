@@ -9,6 +9,7 @@ package ers;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 
 /**
@@ -20,7 +21,8 @@ public class ERS {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("Welcome to ERS-Java. Maximum of 4 players supported.\nSlap Keys:\n\tPlayer1: Q\n\tPlayer2: P\n\tPlayer3: Z\n\tPlayer4: M\nMill Key: SPACE");
         System.out.println("How many players?: ");
         Scanner scan=new Scanner(System.in);
         int num_of_players=scan.nextInt();
@@ -32,24 +34,33 @@ public class ERS {
             System.out.println(i+1);
             p.plist[i].add(initial_deck.draw());
         }
-        /*JFrame window=new JFrame();
+        JFrame window=new JFrame();
         window.setTitle("ERS");
         window.setSize(819, 648);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        DrawingComponent DC = new DrawingComponent();
+        window.addKeyListener(p);
+        //DrawingComponent DC = new DrawingComponent();
         /*File img =new File("as");
         BufferedImage card = Image(img);*/
         //window.add(DC);*/
-        for(;;){
-            if (p.turn_flag==false)
+        for(;;){ // Game Loop Here
+            TimeUnit.MILLISECONDS.sleep(100);
+            System.out.println("Player" + turn + " turn.");
+            if (p.turn_flag==false) {
                 p.plist[turn-1].play(play_here);
+            }
             else
                 continue;
             if (num_of_players==turn)
                 turn=0;
             turn++;
+            p.turn_flag = true;
+            if(p.GameOver()) {
+                break;
+            }
         }
+        System.out.println("Game Over.");
     }
 
     /*private static BufferedImage Image(File img) {
