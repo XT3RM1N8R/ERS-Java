@@ -27,13 +27,14 @@ public class DrawingComponent extends JComponent{
     Rectangle card= new Rectangle(335,200,150,250);
     card ref;
     File file= new File(pick_card());
-    BufferedImage img;
+    public BufferedImage whatever() throws IOException{
+        BufferedImage img;
+        img = ImageIO.read(file);
+        return img;
+    }
     
-        try {
-            img = ImageIO.read(file);
-        } catch (IOException ex) {
-            Logger.getLogger(DrawingComponent.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+        
 
     public void paintComponent(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
