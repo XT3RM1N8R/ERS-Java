@@ -58,14 +58,24 @@ public class pile {
     }
     public boolean Check_slap(){
         //series of checks; return true if check is true
-        /*otherwise*/return false;
+        if(Double())
+            return true;
+        if(Sandwich())
+            return true;
+        if(TopBottom())
+            return true;
+        if(Tens())
+            return true;
+        if(Run())
+            return true;
+        return Marriage();
     }
     
     public boolean IsEmpty() {
         return pileCards.isEmpty();
     }
     
-    public class SlapRules {
+    
         public boolean Double() {
             return (LastCard().rank_value() == SecondLastCard().rank_value());
         }
@@ -104,5 +114,5 @@ public class pile {
                 return false;
             }
         }
-    }
+    
 }

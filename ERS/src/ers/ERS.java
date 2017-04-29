@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 public class ERS {
     public static int nop;
     public static boolean started;
+    public static pile play_here;
     /**
      * @param args the command line arguments
      */
@@ -30,9 +31,10 @@ public class ERS {
         int num_of_players=scan.nextInt();
         ERS.nop=num_of_players;
         deck initial_deck=new deck();
+        initial_deck.shuffle();
         all_players p= new all_players(num_of_players);
         int turn = 1;
-        pile play_here= new pile();
+        play_here= new pile();
         for(int i=0;initial_deck.dsize!=0;i=(i+1)%num_of_players){
             System.out.println(i+1);
             p.plist[i].add(initial_deck.draw());
