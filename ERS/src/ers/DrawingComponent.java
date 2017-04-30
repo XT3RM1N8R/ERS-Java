@@ -47,6 +47,7 @@ public class DrawingComponent extends JComponent{
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.white);
         g2.fill(background);
+        if (!ERS.started||(ERS.started&&!(ERS.play_here.pileCards.size()==0))){
         try {
             cimg=whatever();
         } catch (IOException ex) {
@@ -57,7 +58,9 @@ public class DrawingComponent extends JComponent{
         else
             g2.drawImage(cimg, 0, 0, 800, 600, this);
         //g2.drawImage(cimg, null, 150, 250);
-        
+        }//close if
+        else
+            g2.fill(background);
     }
     public void setRank (card c){
         ref.rank=c.rank;

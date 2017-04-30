@@ -11,7 +11,7 @@ import java.util.*;
  * @author shadows97_7
  */
 public class pile {
-    static ArrayList<card> pileCards;//static
+    ArrayList<card> pileCards;//static
     public int NUM_RANKS = 13;
     pile(){
         pileCards = new ArrayList<card>();
@@ -62,8 +62,8 @@ public class pile {
             return true;
         if(Sandwich())
             return true;
-        if(TopBottom())
-            return true;
+        /*if(TopBottom())
+            return true;*/
         if(Tens())
             return true;
         if(Run())
@@ -77,42 +77,43 @@ public class pile {
     
     
         public boolean Double() {
-            return (LastCard().rank_value() == SecondLastCard().rank_value());
+            if (pileCards.size()>1)
+                return (LastCard().rank_value() == SecondLastCard().rank_value());
+            return false;
         }
         
         public boolean Sandwich() {
-            return (LastCard().rank_value() == ThirdLastCard().rank_value());
+            if (pileCards.size()>2)
+                return (LastCard().rank_value() == ThirdLastCard().rank_value());
+            return false;
         }
         
-        public boolean TopBottom() {
+        /*public boolean TopBottom() {
             return (TopCard().rank_value() == BottomCard().rank_value());
-        }
+        }*/ //i took this out because i feel it breaks the game
         
         public boolean Tens() {
-            if(LastCard().rank_value() + SecondLastCard().rank_value() == 10) {
-                return true;
-            } else if(LastCard().rank_value() + ThirdLastCard().rank_value() == 10) {
-                return true;
-            } else {
-                return false;
-            }
+            if(pileCards.size()>1){
+                if(LastCard().rank_value() + SecondLastCard().rank_value() == 10) {
+                    return true;}//end if
+            } if(pileCards.size()>2) 
+                return LastCard().rank_value() + ThirdLastCard().rank_value() == 10;
+            return false;
         }
         
         public boolean Run() {
-            if(((FourthLastCard().rank_value() - 1) + 1) % NUM_RANKS == ThirdLastCard().rank_value() - 1 && 
-               ((ThirdLastCard().rank_value() - 1) + 1) % NUM_RANKS == SecondLastCard().rank_value() - 1 && 
-               ((SecondLastCard().rank_value() - 1) + 1) % NUM_RANKS == LastCard().rank_value() - 1) {
-                return true;
-            }
+            System.out.println(pileCards.size());
+            if (pileCards.size()>3){
+            return (FourthLastCard().rank_value() + 1)  == ThirdLastCard().rank_value() && 
+                    (ThirdLastCard().rank_value() + 1)  == SecondLastCard().rank_value() &&
+                    (SecondLastCard().rank_value() + 1)  == LastCard().rank_value();}//end if
             return false;
         }
         
         public boolean Marriage() {
-            if(LastCard().rank_value() + SecondLastCard().rank_value() == 25) { // If the last 2 cards are Queen and King
-                return true;
-            } else {
-                return false;
-            }
+            if (pileCards.size()>1)
+                return LastCard().rank_value() + SecondLastCard().rank_value() == 25; // If the last 2 cards are Queen and King
+            return false;
         }
     
 }
