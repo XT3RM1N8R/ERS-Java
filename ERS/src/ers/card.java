@@ -12,6 +12,9 @@ package ers;
 public class card {
     public char suit;
     public char rank;
+    card (){
+        
+    }
     card (char csuit, char crank){
         suit=csuit;
         rank=crank;

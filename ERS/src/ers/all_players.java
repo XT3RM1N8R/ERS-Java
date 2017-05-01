@@ -26,11 +26,12 @@ public class all_players implements KeyListener{
             plist[i].player_number=i+1;
         }
     }
-    pile plile;//THIS THING AND EVERYTIME I USED IT
+    //pile ERS.play_here;//THIS THING AND EVERYTIME I USED IT
     
     public boolean GameOver() {
-        for(int playerIndex = 0; playerIndex < 4; playerIndex++) {
-            if(plist[playerIndex].hsize == 52 && plile.IsEmpty()) { // NUM_CARDS is 52
+        for(int playerIndex = 0; playerIndex < ERS.nop; playerIndex++) {
+            System.out.println("Cylcle"+playerIndex);
+            if(plist[playerIndex].hsize == 52 && ERS.play_here.IsEmpty()) { // NUM_CARDS is 52
                 return true;
             } else if(plist[playerIndex].hsize == 52) {
                 System.out.println("Game Broken by impossible card stacks.");
@@ -48,16 +49,16 @@ public class all_players implements KeyListener{
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyCode()){
             case KeyEvent.VK_Q:
-                plist[0].slap(plile);
+                plist[0].slap(ERS.play_here);
                 break;
             case KeyEvent.VK_P:
-                plist[1].slap(plile);
+                plist[1].slap(ERS.play_here);
                 break;
             case KeyEvent.VK_Z:
-                plist[2].slap(plile);
+                plist[2].slap(ERS.play_here);
                 break;
             case KeyEvent.VK_M:
-                plist[3].slap(plile);
+                plist[3].slap(ERS.play_here);
                 break;
             case KeyEvent.VK_SPACE:
                 turn_flag=false;
