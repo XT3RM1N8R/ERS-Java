@@ -79,17 +79,11 @@ public class pile {
     }
     public boolean Check_slap(){
         //series of checks; return true if check is true
-        if(Double())
-            return true;
-        if(Sandwich())
-            return true;
-        /*if(TopBottom())
-            return true;*/
-        if(Tens())
-            return true;
-        if(Run())
-            return true;
-        return Marriage();
+        return (Double()     ||
+                Sandwich()   ||
+                Tens()       ||
+                Run()        ||
+                Marriage());
     }
     
     public boolean IsEmpty() { // Is the Card Pile empty?

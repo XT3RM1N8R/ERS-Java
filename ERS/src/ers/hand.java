@@ -47,6 +47,7 @@ public class hand {
             while (!p.IsEmpty()){ // "TakePile"
                 add(p.DrawBottom());
             }
+            ERS.isFaceOff = false;
         }
         else if(hsize!=0) {
             mill(p);
