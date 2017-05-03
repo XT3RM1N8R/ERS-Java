@@ -47,6 +47,9 @@ public class DrawingComponent extends JComponent{
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.white);
         g2.fill(background);
+        g2.setColor(Color.red);
+        g2.fillOval(5, 5, 20, 20);
+        //g2.
         if (!ERS.started||(ERS.started&&!(ERS.play_here.pileCards.size()==0))){
         try {
             cimg=whatever();

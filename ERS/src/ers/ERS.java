@@ -20,6 +20,7 @@ public class ERS {
     public static int nop;
     public static boolean started;
     public static pile play_here;
+    public static int turn;
     /**
      * @param args the command line arguments
      */
@@ -33,7 +34,7 @@ public class ERS {
         deck initial_deck=new deck();
         initial_deck.shuffle();
         all_players p= new all_players(num_of_players);
-        int turn = 1;
+        turn = 1;
         play_here= new pile();
         for(int i=0;initial_deck.dsize!=0;i=(i+1)%num_of_players){
             System.out.println(i+1);
