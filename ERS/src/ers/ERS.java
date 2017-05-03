@@ -20,6 +20,11 @@ public class ERS {
     public static int nop;
     public static boolean started;
     public static pile play_here;
+    public static boolean isFaceOff;
+    public static int numFaceOffTriesLeft;
+    public static int faceOffInitiatingPlayerIndex;
+    public static all_players p;
+    public static int turn;
     /**
      * @param args the command line arguments
      */
@@ -32,8 +37,8 @@ public class ERS {
         ERS.nop=num_of_players;
         deck initial_deck=new deck();
         initial_deck.shuffle();
-        all_players p= new all_players(num_of_players);
-        int turn = 1;
+        p = new all_players(num_of_players);
+        turn = 1;
         play_here= new pile();
         for(int i=0;initial_deck.dsize!=0;i=(i+1)%num_of_players){
             System.out.println(i+1);
@@ -71,6 +76,14 @@ public class ERS {
             window.repaint();
         }
         System.out.println("Game Over.");
+    }
+    
+    public void FaceOff(int turn) {
+        faceOffInitiatingPlayerIndex = turn - 1;
+        isFaceOff = true;
+        while(isFaceOff == true) {
+            
+        }
     }
 
     /*private static BufferedImage Image(File img) {
