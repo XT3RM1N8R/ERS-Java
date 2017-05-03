@@ -92,28 +92,51 @@ public class pile {
         return Marriage();
     }
     
-    public boolean IsEmpty() {
+    public boolean IsEmpty() { // Is the Card Pile empty?
         return pileCards.isEmpty();
     }
     
+    public boolean IsFaceOffStart() { // Is there a face card on the top of the Card Pile? If there is, then it's time for a Face Off!
+        if(TopCard().rank_value() == 1 || TopCard().rank_value() > 10) {
+            return true;
+        } else {
+            return FLASE;
+        }
+    }
     
-        public boolean Double() {
+    public int NumFaceOffTries() {
+        if(IsFaceOffStart()) {
+            switch(TopCard().rank) {
+                case 'J': return 1;
+                case 'Q': return 2;
+                case 'K': return 3;
+                case 'A': return 4;
+                default: System.out.println("An impossible face card has been encountered at NumFaceOffTries()."); return 0;
+            }
+        } else {
+            System.out.println("You should not call this function where it was just called.");
+            return 0;
+        }
+    }
+    
+    
+        public boolean Double() { // 2 cards in a row of the same rank
             if (pileCards.size()>1)
                 return (LastCard().rank_value() == SecondLastCard().rank_value());
             return false;
         }
         
-        public boolean Sandwich() {
+        public boolean Sandwich() { // 2 cards of the same rank, separated by another card
             if (pileCards.size()>2)
                 return (LastCard().rank_value() == ThirdLastCard().rank_value());
             return false;
         }
         
-        /*public boolean TopBottom() {
+        /*public boolean TopBottom() { // Top and bottom card have same rank
             return (TopCard().rank_value() == BottomCard().rank_value());
         }*/ //i took this out because i feel it breaks the game
         
-        public boolean Tens() {
+        public boolean Tens() { // 2 cards in a row whose ranks add up to 10
             if(pileCards.size()>1){
                 if(LastCard().rank_value() + SecondLastCard().rank_value() == 10) {
                     return true;}//end if
@@ -122,7 +145,7 @@ public class pile {
             return false;
         }
         
-        public boolean Run() {
+        public boolean Run() { // 4 cards in a row with contiguous rank values in ascending or descending order
             System.out.println(pileCards.size());
             if (pileCards.size()>3){
                 return ((FourthLastCard().rank_value() - 1 + 1) % 13  == ThirdLastCard().rank_value()   - 1  && 
@@ -137,7 +160,7 @@ public class pile {
             }   //end if
         }
         
-        public boolean Marriage() {
+        public boolean Marriage() { // King and Queen next to each other
             if (pileCards.size()>1)
                 return LastCard().rank_value() + SecondLastCard().rank_value() == 25; // If the last 2 cards are Queen and King
             return false;

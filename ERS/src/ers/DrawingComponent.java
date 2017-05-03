@@ -82,10 +82,10 @@ public class DrawingComponent extends JComponent{
         } catch (IOException ex) {
             Logger.getLogger(DrawingComponent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(ERS.started)
-            g2.drawImage(cimg, 335, 200, 150, 250, this);
-        else
-            g2.drawImage(cimg, 0, 0, 800, 600, this);
+            if(ERS.started)
+                g2.drawImage(cimg, 335, 200, 150, 250, this);
+            else
+                g2.drawImage(cimg, 0, 0, 800, 600, this);
         //g2.drawImage(cimg, null, 150, 250);
         }//close if
         else
