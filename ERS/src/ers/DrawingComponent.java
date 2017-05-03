@@ -63,7 +63,7 @@ public class DrawingComponent extends JComponent{
                 g2.fillOval(690, 530, 60, 60);
                 break;
         }
-        g2.setColor(Color.red);
+        g2.setColor(Color.black);
         g2.drawString(px.concat("1"), 20, 20);
         g2.drawString(String.valueOf(ERS.p.plist[0].hsize),30,35);
         g2.drawString(px.concat("2"), 700, 20);
@@ -74,7 +74,7 @@ public class DrawingComponent extends JComponent{
         }
         if (ERS.num_of_players>3){
             g2.drawString(px.concat("4"), 700, 550);
-            g2.drawString(String.valueOf(ERS.p.plist[2].hsize),710,565);
+            g2.drawString(String.valueOf(ERS.p.plist[3].hsize),710,565);
         }
         if (!ERS.started||(ERS.started&&!ERS.play_here.pileCards.isEmpty())){
         try {
