@@ -63,7 +63,7 @@ public class DrawingComponent extends JComponent{
                 g2.fillOval(690, 530, 60, 60);
                 break;
         }
-        g2.setColor(Color.black);
+        g2.setColor(Color.red);
         g2.drawString(px.concat("1"), 20, 20);
         g2.drawString(String.valueOf(ERS.p.plist[0].hsize),30,35);
         g2.drawString(px.concat("2"), 700, 20);
@@ -76,7 +76,7 @@ public class DrawingComponent extends JComponent{
             g2.drawString(px.concat("4"), 700, 550);
             g2.drawString(String.valueOf(ERS.p.plist[2].hsize),710,565);
         }
-        if (!ERS.started||(ERS.started&&!(ERS.play_here.pileCards.size()==0))){
+        if (!ERS.started||(ERS.started&&!ERS.play_here.pileCards.isEmpty())){
         try {
             cimg=whatever();
         } catch (IOException ex) {
@@ -88,8 +88,10 @@ public class DrawingComponent extends JComponent{
                 g2.drawImage(cimg, 0, 0, 800, 600, this);
         //g2.drawImage(cimg, null, 150, 250);
         }//close if
-        else
-            g2.fill(background);
+        else{
+            g2.setColor(Color.white);
+            g2.fill(card);
+        }    
     }
     public void setRank (card c){
         ref.rank=c.rank;
