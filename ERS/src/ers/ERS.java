@@ -21,6 +21,7 @@ public class ERS {
     public static boolean started;
     public static pile play_here;
     public static int turn;
+    public static all_players p;
     /**
      * @param args the command line arguments
      */
@@ -33,7 +34,7 @@ public class ERS {
         ERS.nop=num_of_players;
         deck initial_deck=new deck();
         initial_deck.shuffle();
-        all_players p= new all_players(num_of_players);
+        p= new all_players(num_of_players);
         turn = 1;
         play_here= new pile();
         for(int i=0;initial_deck.dsize!=0;i=(i+1)%num_of_players){

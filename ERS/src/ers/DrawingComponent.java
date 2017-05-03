@@ -44,12 +44,38 @@ public class DrawingComponent extends JComponent{
         
 
     public void paintComponent(Graphics g){
+        String px="player ";
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.white);
         g2.fill(background);
-        g2.setColor(Color.red);
-        g2.fillOval(5, 5, 20, 20);
-        //g2.
+        g2.setColor(Color.CYAN);
+        switch (ERS.turn){
+            case 1:
+                g2.fillOval(10, 0, 60, 60);
+                break;
+            case 2:
+                g2.fillOval(690, 0, 60, 60);
+                break;
+            case 3:
+                g2.fillOval(10, 530, 60, 60);
+                break;
+            case 4:
+                g2.fillOval(690, 530, 60, 60);
+                break;
+        }
+        g2.setColor(Color.black);
+        g2.drawString(px.concat("1"), 20, 20);
+        g2.drawString(String.valueOf(ERS.p.plist[0].hsize),30,35);
+        g2.drawString(px.concat("2"), 700, 20);
+        g2.drawString(String.valueOf(ERS.p.plist[1].hsize),710,35);
+        if (ERS.nop>2){
+            g2.drawString(px.concat("3"), 20, 550);
+            g2.drawString(String.valueOf(ERS.p.plist[2].hsize),30,565);
+        }
+        if (ERS.nop>3){
+            g2.drawString(px.concat("4"), 700, 550);
+            g2.drawString(String.valueOf(ERS.p.plist[2].hsize),710,565);
+        }
         if (!ERS.started||(ERS.started&&!(ERS.play_here.pileCards.size()==0))){
         try {
             cimg=whatever();
