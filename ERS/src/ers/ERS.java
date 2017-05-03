@@ -53,7 +53,6 @@ public class ERS {
         /*File img =new File("as");
         BufferedImage card = Image(img);*/
         window.add(DC);
-        card viewing;
         for(;;){ // Game Loop Here
             TimeUnit.MILLISECONDS.sleep(100);
             while(p.plist[currentPlayerIndex()].hsize == 0) { // If the current player is out of cards, it is the next player's turn. 
