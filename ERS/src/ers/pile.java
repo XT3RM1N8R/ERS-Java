@@ -18,15 +18,15 @@ public class pile {
         pileCards = new ArrayList<card>();
     }
     
-    public card BottomCard() {
+    public card BottomCard() { // Return the card at the bottom of the pile
         return pileCards.get(0);
     }
     
-    public card DrawBottom() {
+    public card DrawBottom() { // Return and remove the card at the bottom of the pile
         return pileCards.remove(0);
     }
     
-    public card TopCard() {
+    public card TopCard() { // Return the card at the top of the pile
         if(!pileCards.isEmpty()){
             return pileCards.get(pileCards.size()-1);
         } else {
@@ -35,15 +35,15 @@ public class pile {
         }
     }
     
-    public card DrawTop() {
+    public card DrawTop() { // Return and remove the card at the top of the pile
         return pileCards.remove(pileCards.size()-1);
     }
     
-    public card LastCard() {
+    public card LastCard() { // Return the card at the top of the pile
         return TopCard();
     }
     
-    public card SecondLastCard() {
+    public card SecondLastCard() { // Return the second-last top card from the pile
         if(pileCards.size() > 1) {
             return pileCards.get(pileCards.size()-2);
         } else {
@@ -52,7 +52,7 @@ public class pile {
         }
     }
     
-    public card ThirdLastCard() {
+    public card ThirdLastCard() { // Return the third-last top card from the pile
         if(pileCards.size() > 2) {
             return pileCards.get(pileCards.size()-3);
         } else {
@@ -61,7 +61,7 @@ public class pile {
         }
     }
     
-    public card FourthLastCard() {
+    public card FourthLastCard() { // Return the fourth-last top card from the pile
         if(pileCards.size() > 3) {
             return pileCards.get(pileCards.size()-4);
         } else {
@@ -70,14 +70,23 @@ public class pile {
         }
     }
     
-    public void AddToBottom(card cCard) {
+    public card GetCardFromTopByPosNum(int posNum) { // Return the card whose position from the top is indicated by the passed value, with the top card at value of "1"
+        if(!pileCards.isEmpty() && pileCards.size() > posNum - 1) {
+            return pileCards.get(pileCards.size()-posNum);
+        } else {
+            System.out.println("The Card Pile is not large enough for a card at position " + posNum + " from the top.");
+            return new card();
+        }
+    }
+    
+    public void AddToBottom(card cCard) { // Add the passed card to the bottom of the pile
         pileCards.add(0, cCard);
     }
     
-    public void AddToTop(card cCard) {
+    public void AddToTop(card cCard) { // Add the passed card to the top of the pile
         pileCards.add(cCard);
     }
-    public boolean Check_slap(){
+    public boolean Check_slap(){ // boolean for whether or not any of the slap rules are valid at the moment this function is called
         //series of checks; return true if check is true
         return (Double()     ||
                 Sandwich()   ||
@@ -98,7 +107,7 @@ public class pile {
         }
     }
     
-    public int NumFaceOffTries() {
+    public int NumFaceOffTries() { // Calculates number of tries a player has before they lose the Face-Off to the initiating player
         if(IsFaceOffStart()) {
             switch(TopCard().rank) {
                 case 'J': return 1;
@@ -130,12 +139,26 @@ public class pile {
             return (TopCard().rank_value() == BottomCard().rank_value());
         }*/ //i took this out because i feel it breaks the game
         
-        public boolean Tens() { // 2 cards in a row whose ranks add up to 10
-            if(pileCards.size()>1){
+        public boolean Tens() { // Multiple conditions where card ranks add up to 10
+            if(pileCards.size()>1){ // 2 cards in a row whose ranks add up to 10
                 if(LastCard().rank_value() + SecondLastCard().rank_value() == 10) {
                     return true;}//end if
-            } if(pileCards.size()>2) 
+            }
+            if(pileCards.size()>2) { // Sandwich of ranks that add up to 10
                 return LastCard().rank_value() + ThirdLastCard().rank_value() == 10;
+            }
+            
+            int consecutiveRankValueCount = 0;
+            int cardPosNum = 1;
+            while(consecutiveRankValueCount < 10) { // Up to 7 consecutive cards add up to 10
+                consecutiveRankValueCount = GetCardFromTopByPosNum(cardPosNum++).rank_value(); // We don't care how many cards it took to add up to 10
+                if(cardPosNum > pileCards.size()) { // If the end of the Card Pile is reached within this function
+                    break;
+                }
+            }                                       // After 7 cards, the sum will be more than 10, no matter what
+            if(consecutiveRankValueCount == 10) {
+                return true;
+            }
             return false;
         }
         

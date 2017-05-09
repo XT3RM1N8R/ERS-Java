@@ -30,7 +30,7 @@ public class DrawingComponent extends JComponent{
     Rectangle background= new Rectangle(0,0,800,600);
     Rectangle card= new Rectangle(335,200,150,250);
     card ref=new card();
-    File file= new File("placeholder.png");
+    File file= new File("resources/placeholder.png");
     
     public BufferedImage whatever() throws IOException{
         BufferedImage img;
@@ -121,6 +121,6 @@ public class DrawingComponent extends JComponent{
         }
         x=x.concat(String.valueOf(ref.suit));
         x=x.toLowerCase();
-        return x+".png";
+        return "resources/" + x + ".png";
     }
 }
