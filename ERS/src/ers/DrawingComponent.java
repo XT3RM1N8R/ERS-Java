@@ -6,6 +6,7 @@
 package ers;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -48,6 +49,19 @@ public class DrawingComponent extends JComponent{
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.white);
         g2.fill(background);
+        Font dflt = g2.getFont();
+        Font big_font = new Font("TimesRoman", Font.PLAIN, 30);
+        if(ERS.ended){
+            g2.setColor(Color.black);
+            g2.setFont(dflt);
+            g2.drawString("Player "+String.valueOf(ERS.winner)+" wins!", 375, 300);
+            g2.setFont(big_font);
+            g2.drawString("GAME OVER", 325, 200);
+        }
+        else{
+            
+            
+        
         g2.setColor(Color.CYAN);
         switch (ERS.turn){
             case 1:
@@ -91,7 +105,9 @@ public class DrawingComponent extends JComponent{
         else{
             g2.setColor(Color.white);
             g2.fill(card);
-        }    
+        } 
+        
+        }//end else
     }
     public void setRank (card c){
         ref.rank=c.rank;

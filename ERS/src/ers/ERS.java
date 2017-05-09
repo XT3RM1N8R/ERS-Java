@@ -25,11 +25,14 @@ public class ERS {
     public static all_players p;
     public static int turn;
     public static int num_of_players;
+    public static boolean ended; 
+    public static int winner;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws InterruptedException {
         started=false;
+        ended=false;
         System.out.println("Welcome to ERS-Java. Maximum of 4 players supported.\nSlap Keys:\n\tPlayer1: Q\n\tPlayer2: P\n\tPlayer3: Z\n\tPlayer4: M\nMill Key: SPACE");
         System.out.println("How many players?: ");
         Scanner scan = new Scanner(System.in);
@@ -84,6 +87,7 @@ public class ERS {
                 continue;
             p.turn_flag = true;
             if(p.GameOver()) {
+                ended=true;
                 break;
             }
             window.repaint();
