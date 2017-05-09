@@ -32,13 +32,18 @@ public class all_players implements KeyListener{
         for(int playerIndex = 0; playerIndex < ERS.num_of_players; playerIndex++) {
             System.out.println("Cylcle"+playerIndex);
             if(plist[playerIndex].hsize == 52 && ERS.play_here.IsEmpty()) { // NUM_CARDS is 52
-                ERS.winner=playerIndex+1;
+                ERS.winner = playerIndex+1;
                 return true;
             } else if(plist[playerIndex].hsize == 52) {
                 System.out.println("Game Broken by impossible card stacks.");
                 return false;
+            } else if(ERS.play_here.pileCards.size() == 52) {
+                ERS.winner = 5;
+                System.out.println("Everyone lost their cards to the pile. Everyone is disappointed. Game Over.");
+                return true;
             }
         }
+        System.out.println("Not Game Over.");
         return false;
     }
 

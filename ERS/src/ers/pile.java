@@ -140,6 +140,9 @@ public class pile {
         }*/ //i took this out because i feel it breaks the game
         
         public boolean Tens() { // Multiple conditions where card ranks add up to 10
+            if(!IsEmpty() && TopCard().rank_value() == 10) {
+                return false;
+            }
             if(pileCards.size()>1){ // 2 cards in a row whose ranks add up to 10
                 if(LastCard().rank_value() + SecondLastCard().rank_value() == 10) {
                     return true;}//end if

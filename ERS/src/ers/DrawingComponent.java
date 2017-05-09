@@ -54,7 +54,11 @@ public class DrawingComponent extends JComponent{
         if(ERS.ended){
             g2.setColor(Color.black);
             g2.setFont(dflt);
-            g2.drawString("Player "+String.valueOf(ERS.winner)+" wins!", 375, 300);
+            if(ERS.winner < 5) {            
+                g2.drawString("Player "+String.valueOf(ERS.winner)+" wins!", 375, 300);               
+            } else {
+                g2.drawString("Pile wins... Nobody is happy.", 360, 300);               
+            }
             g2.setFont(big_font);
             g2.drawString("GAME OVER", 325, 200);
         }
@@ -79,16 +83,16 @@ public class DrawingComponent extends JComponent{
         }
         g2.setColor(Color.black);
         g2.drawString(px.concat("1"), 20, 20);
-        g2.drawString(String.valueOf(ERS.p.plist[0].hsize),30,35);
+        g2.drawString(String.valueOf(ERS.playerList.plist[0].hsize),30,35);
         g2.drawString(px.concat("2"), 700, 20);
-        g2.drawString(String.valueOf(ERS.p.plist[1].hsize),710,35);
+        g2.drawString(String.valueOf(ERS.playerList.plist[1].hsize),710,35);
         if (ERS.num_of_players>2){
             g2.drawString(px.concat("3"), 20, 550);
-            g2.drawString(String.valueOf(ERS.p.plist[2].hsize),30,565);
+            g2.drawString(String.valueOf(ERS.playerList.plist[2].hsize),30,565);
         }
         if (ERS.num_of_players>3){
             g2.drawString(px.concat("4"), 700, 550);
-            g2.drawString(String.valueOf(ERS.p.plist[3].hsize),710,565);
+            g2.drawString(String.valueOf(ERS.playerList.plist[3].hsize),710,565);
         }
         if (!ERS.started||(ERS.started&&!ERS.play_here.pileCards.isEmpty())){
         try {

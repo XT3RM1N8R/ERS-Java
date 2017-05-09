@@ -22,7 +22,7 @@ public class ERS {
     public static boolean isFaceOff;
     public static int numFaceOffTriesLeft;
     public static int faceOffInitiatingPlayerIndex;
-    public static all_players p;
+    public static all_players playerList;
     public static int turn;
     public static int num_of_players;
     public static boolean ended; 
@@ -39,31 +39,35 @@ public class ERS {
         num_of_players = scan.nextInt();
         deck initial_deck = new deck();
         initial_deck.shuffle();
-        p = new all_players(num_of_players);
+        playerList = new all_players(num_of_players);
         turn = 1;
         play_here = new pile();
         for(int i=0;initial_deck.dsize!=0;i=(i+1)%num_of_players){
             System.out.println(i+1);
-            p.plist[i].add(initial_deck.draw());
+            playerList.plist[i].add(initial_deck.draw());
         }
         JFrame window=new JFrame();
         window.setTitle("ERS");
         window.setSize(819, 648);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.addKeyListener(p);
+        window.addKeyListener(playerList);
         DrawingComponent DC = new DrawingComponent();
         /*File img =new File("as");
         BufferedImage card = Image(img);*/
         window.add(DC);
         for(;;){ // Game Loop Here
+            if(playerList.GameOver()) {
+                ended=true;
+                break;
+            }
             TimeUnit.MILLISECONDS.sleep(100);
-            while(p.plist[currentPlayerIndex()].hsize == 0) { // If the current player is out of cards, it is the next player's turn. 
+            while(playerList.plist[currentPlayerIndex()].hsize == 0) { // If the current player is out of cards, it is the next player's turn. 
                 NextTurn();
             }
             System.out.println("Player" + turn + " turn.");
-            if (p.turn_flag == false) { // Wait for player to press SPACE
-                p.plist[currentPlayerIndex()].play(play_here);
+            if (playerList.turn_flag == false) { // Wait for player to press SPACE
+                playerList.plist[currentPlayerIndex()].play(play_here);
                 started = true;         // The game has started
                 DC.setRank(play_here.TopCard());
                 DC.setSuit(play_here.TopCard());
@@ -75,7 +79,7 @@ public class ERS {
                 } else if(isFaceOff) {
                     if(numFaceOffTriesLeft == 0) {
                         isFaceOff = false;
-                        p.plist[faceOffInitiatingPlayerIndex].TakePile();
+                        playerList.plist[faceOffInitiatingPlayerIndex].TakePile();
                     } else {
                         numFaceOffTriesLeft--;
                     }
@@ -85,11 +89,7 @@ public class ERS {
             }
             else
                 continue;
-            p.turn_flag = true;
-            if(p.GameOver()) {
-                ended=true;
-                break;
-            }
+            playerList.turn_flag = true;
             window.repaint();
         }
         System.out.println("Game Over.");
