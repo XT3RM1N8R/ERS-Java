@@ -74,6 +74,10 @@ public class ERS {
             }
             TimeUnit.MILLISECONDS.sleep(100);
             while(playerList.plist[currentPlayerIndex()].hsize == 0) { // If the current player is out of cards, it is the next player's turn. 
+                if(playerList.GameOver()) { // If all players run out of cards, this would otherwise cause an infinite loop.
+                    ended = true;
+                    break;
+                }
                 NextTurn();
             }
             System.out.println("Player" + turn + " turn.");
