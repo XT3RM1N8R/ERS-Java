@@ -33,7 +33,7 @@ public class DrawingComponent extends JComponent{
     card ref=new card();
     File file= new File("resources/placeholder.png");
     
-    public BufferedImage whatever() throws IOException{
+    public BufferedImage whatever() throws IOException{ // Decides which card to draw to the GUI
         BufferedImage img;
         if (ERS.started)
             file=new File(pick_card());
@@ -44,7 +44,7 @@ public class DrawingComponent extends JComponent{
     BufferedImage cimg;
         
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g){ // Main drawing callback function; called for every draw
         String px="player ";
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.white);
@@ -113,13 +113,13 @@ public class DrawingComponent extends JComponent{
         
         }//end else
     }
-    public void setRank (card c){
+    public void setRank (card c){ // Finds rank of card to paint
         ref.rank=c.rank;
     }
-    public void setSuit (card c){
+    public void setSuit (card c){ // Finds suit of card to paint
         ref.suit=c.suit;
     }
-    private String pick_card(){
+    private String pick_card(){ // Constructs string dependent on logic used to determine card to paint; builds proper resource filename
         String x="";
         switch (ref.rank_value()){
             case 1:
