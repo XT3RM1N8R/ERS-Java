@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Names:          Darrel Donald & Darien Sokolov
+Course:         Object Oriented Programming
+Date:           5/10/2017
+Description:    ERS-Java is a console-based, GUI-supplemented playable game inspired by the Egyptian Rat Screw (ERS) card game.
+Input:          Numbers 1-4 representing the desired number of players; The rest of the input commands are explained at program runtime.
+Output:         Input-dependent GUI representations of the game events, supplemented with useful game state information in the console, for debugging or additional information during gameplay.
+Runtime Brief:  Prompt for number of players; game ensues; winner arises; end of game is announced.
+Test Cases:     The nature of this game is based both on random number generation and the overall cunning of each player. The quickest way to test the end-game prompt is to force strategic behavior on a single player, with opposite behavior for the rest.
+Artifacts:      The images used within the GUI are explicitly created for use in the public domain. We are not the creators of these resources.
+Contributions:  It may be noted that certain parts of the project were mostly--not exclusively--developed by certain members; Darrel Donald - DrawingComponent.java, Darien Sokolov - pile.java
+Contributions:  Most parts of this application were developed and modified by both members in this team. The actual contributions may be tracked in the timeline at: https://github.com/XT3RM1N8R/ERS-Java/
  */
 package ers;
 
