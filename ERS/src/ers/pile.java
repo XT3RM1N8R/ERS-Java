@@ -14,7 +14,7 @@ public class pile {
     ArrayList<card> pileCards;//static
     public int NUM_RANKS = 13;
     public boolean FLASE = false;
-    pile(){
+    pile(){ // Initialize pile with an ArrayList of card type
         pileCards = new ArrayList<card>();
     }
     
@@ -116,7 +116,7 @@ public class pile {
                 case 'A': return 4;
                 default: System.out.println("An impossible face card has been encountered at NumFaceOffTries()."); return 0;
             }
-        } else {
+        } else { // This should never be reached
             System.out.println("You should not call this function where it was just called.");
             return 0;
         }
@@ -166,7 +166,7 @@ public class pile {
         }
         
         public boolean Run() { // 4 cards in a row with contiguous rank values in ascending or descending order
-            System.out.println(pileCards.size());
+            //System.out.println(pileCards.size());
             if (pileCards.size()>3){
                 return ((FourthLastCard().rank_value() - 1 + 1) % 13  == ThirdLastCard().rank_value()   - 1  && 
                         (ThirdLastCard().rank_value()  - 1 + 1) % 13  == SecondLastCard().rank_value()  - 1  &&
@@ -177,7 +177,7 @@ public class pile {
             } else {
                 System.out.println("The Card Pile is not big enough for a Run.");
                 return FLASE; // This exists because I can't seem to spell properly right now.
-            }   //end if
+            }   //end if      // This is an old joke that is worth keeping. FLASE = false;
         }
         
         public boolean Marriage() { // King and Queen next to each other

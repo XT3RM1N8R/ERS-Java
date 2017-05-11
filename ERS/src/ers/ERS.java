@@ -65,6 +65,9 @@ public class ERS {
         BufferedImage card = Image(img);*/
         window.add(DC);
         for(;;){ // Game Loop Here
+            window.repaint();
+            System.out.println("Game Loop");
+            System.out.println("Pile Size = " + play_here.pileCards.size());
             if(playerList.GameOver()) {
                 ended=true;
                 break;
@@ -95,12 +98,13 @@ public class ERS {
                     NextTurn();
                 }
             }
-            else
+            else {
+                System.out.println("Continue");
                 continue;
+            }
             playerList.turn_flag = true;
-            window.repaint();
         }
-        System.out.println("Game Over.");
+        System.out.println("Game Loop Over.");
     }
     
     public static int currentPlayerIndex() { // Return the index of the current player within the array of players.

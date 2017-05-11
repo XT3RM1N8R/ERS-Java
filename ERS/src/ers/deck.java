@@ -12,7 +12,7 @@ package ers;
 public class deck {
     card dcards[]=new card[52];
     int dsize;
-    deck(){
+    deck(){ // Initialize a new deck of 52 unique cards
         int s=0, c=52, r=0; dsize=52;
         while( s != 4){
             r=0;
@@ -56,7 +56,7 @@ public class deck {
             s++;
         }
     }
-    public void shuffle(){
+    public void shuffle(){ // Randomize deck
         int[] bank=new int[52];
         for (int i:bank)
             bank[i]=0;
@@ -71,7 +71,7 @@ public class deck {
             bank[x++]=1;
         }
     }
-    public card draw(){
+    public card draw(){ // Remove and return a card from the deck
         card temp = new card(dcards[0].suit,dcards[0].rank);
         int x = 0;
         while(x!=dsize-1){
